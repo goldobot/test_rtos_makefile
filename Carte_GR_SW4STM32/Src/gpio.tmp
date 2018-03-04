@@ -1,0 +1,60 @@
+
+#n/** Configure pins as #n #t#t #t* Analog #n #t#t #t* Input #n #t#t #t* Output#n #t#t #t* EVENT_OUT#n #t#t #t* EXTI
+*/
+static void MX_GPIO_Init(void)
+{
+#n
+#tGPIO_InitTypeDef GPIO_InitStruct;
+#n#t/* GPIO Ports Clock Enable */
+#t__HAL_RCC_GPIOC_CLK_ENABLE();
+#t__HAL_RCC_GPIOF_CLK_ENABLE();
+#t__HAL_RCC_GPIOA_CLK_ENABLE();
+#t__HAL_RCC_GPIOB_CLK_ENABLE();
+#t__HAL_RCC_GPIOD_CLK_ENABLE();
+#n#t/*Configure GPIO pin Output Level */
+#tHAL_GPIO_WritePin(GPIOC, MAXON_EN_Pin|NUCLEO_DYNA_DIR_Pin, GPIO_PIN_RESET);
+#n#t/*Configure GPIO pin Output Level */
+#tHAL_GPIO_WritePin(GPIOA, MAXON2_DIR_Pin|STM32_PA5_Pin, GPIO_PIN_RESET);
+#n#t/*Configure GPIO pin Output Level */
+#tHAL_GPIO_WritePin(MAXON1_DIR_GPIO_Port, MAXON1_DIR_Pin, GPIO_PIN_RESET);
+#n#t/*Configure GPIO pin : NUCLEO_GPIO_PC13_Pin */
+#tGPIO_InitStruct.Pin = NUCLEO_GPIO_PC13_Pin;
+#tGPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+#tGPIO_InitStruct.Pull = GPIO_NOPULL;
+#tHAL_GPIO_Init(NUCLEO_GPIO_PC13_GPIO_Port, &GPIO_InitStruct);
+#n#t/*Configure GPIO pins : NUCLEO_GPIO_PC14_Pin NUCLEO_ADC1_9_GPIO_Pin NUCLEO_ADC1_8_GPIO_Pin NUCLEO_GPIO_PC6_Pin #n#t#t#t#t#t#t#t#t#t#t#t#t#t NUCLEO_GPIO_PC8_Pin NUCLEO_GPIO_PC9_Pin OLD_UART4_RX_Pin */
+#tGPIO_InitStruct.Pin = NUCLEO_GPIO_PC14_Pin|NUCLEO_ADC1_9_GPIO_Pin|NUCLEO_ADC1_8_GPIO_Pin|NUCLEO_GPIO_PC6_Pin #n#t#t#t#t#t#t#t#t#t#t#t#t#t|NUCLEO_GPIO_PC8_Pin|NUCLEO_GPIO_PC9_Pin|OLD_UART4_RX_Pin;
+#tGPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+#tGPIO_InitStruct.Pull = GPIO_PULLUP;
+#tHAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+#n#t/*Configure GPIO pins : MAXON_EN_Pin NUCLEO_DYNA_DIR_Pin */
+#tGPIO_InitStruct.Pin = MAXON_EN_Pin|NUCLEO_DYNA_DIR_Pin;
+#tGPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+#tGPIO_InitStruct.Pull = GPIO_NOPULL;
+#tGPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+#tHAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+#n#t/*Configure GPIO pins : MAXON2_DIR_Pin STM32_PA5_Pin */
+#tGPIO_InitStruct.Pin = MAXON2_DIR_Pin|STM32_PA5_Pin;
+#tGPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+#tGPIO_InitStruct.Pull = GPIO_NOPULL;
+#tGPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+#tHAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+#n#t/*Configure GPIO pins : STM32_PA6_Pin STM32_PA7_Pin FPGA_A7_Pin */
+#tGPIO_InitStruct.Pin = STM32_PA6_Pin|STM32_PA7_Pin|FPGA_A7_Pin;
+#tGPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+#tGPIO_InitStruct.Pull = GPIO_PULLUP;
+#tHAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+#n#t/*Configure GPIO pin : NUCLEO_GPIO_PB0_Pin */
+#tGPIO_InitStruct.Pin = NUCLEO_GPIO_PB0_Pin;
+#tGPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+#tGPIO_InitStruct.Pull = GPIO_PULLUP;
+#tHAL_GPIO_Init(NUCLEO_GPIO_PB0_GPIO_Port, &GPIO_InitStruct);
+#n#t/*Configure GPIO pin : MAXON1_DIR_Pin */
+#tGPIO_InitStruct.Pin = MAXON1_DIR_Pin;
+#tGPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+#tGPIO_InitStruct.Pull = GPIO_NOPULL;
+#tGPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+#tHAL_GPIO_Init(MAXON1_DIR_GPIO_Port, &GPIO_InitStruct);
+#n
+}
+#n
